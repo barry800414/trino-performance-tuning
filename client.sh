@@ -1,0 +1,1 @@
+docker exec -it trino trino --catalog tpch --schema sf1

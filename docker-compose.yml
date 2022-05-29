@@ -1,0 +1,20 @@
+
+version: '3.1'
+services:
+  trino-coordinator:
+    container_name: trino-coordinator
+    image: trinodb/trino
+    ports:
+      - 8080:8080
+    volumes:
+      - ./coordinator-etc/node.properties:/etc/node.properties:ro
+      - ./coordinator-etc/jvm.config:/etc/jvm.config:ro
+      - ./coordinator-etc/config.properties:/etc/config.properties
+
+  trino-worker-1:
+    container_name: trino-worker-1
+    image: trinodb/trino
+    volumes:
+      - ./worker-etc/node.properties:/etc/node.properties:ro
+      - ./worker-etc/jvm.config:/etc/jvm.config:ro
+      - ./worker-etc/config.properties:/etc/config.properties
